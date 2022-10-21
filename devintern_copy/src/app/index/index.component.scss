@@ -1,0 +1,255 @@
+h5 {
+  padding-right: 20px;
+  padding-top: 10px;
+  font-size: 20px;
+}
+.card-chart {
+  // margin: 25px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.card-chart .card-header {
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgb(247, 247, 247) 0%,
+    rgb(207, 207, 207) 90%
+  );
+}
+main {
+  overflow-x: hidden;
+}
+
+strong,
+.bold {
+  font-weight: bold;
+}
+
+ul.styled-list {
+  list-style: none;
+}
+.chart-area {
+  height: 500px;
+}
+@media only screen and (max-device-width: 700px) {
+  .chart-area {
+    height: 300px;
+    width: 100% !important;
+  }
+}
+
+//=========================================================
+//model
+
+#toggle:checked ~ #expand {
+  height: 500px;
+}
+
+.data-section {
+  color: rgb(253, 253, 253);
+}
+
+::ng-deep.mat-focused.mat-form-field-label {
+  /*change color of label*/
+  color: rgb(255, 255, 255) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(255, 255, 255) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgb(255, 255, 255) !important;
+}
+// ::ng-deep.not-empty-select.mat-selected {
+//   color: green !important;
+// }
+
+::ng-deep.mat-select-value-text {
+  color: rgb(255, 255, 255) !important;
+}
+
+//-------------------------------- upload-------------------------
+.uploadWrapper {
+  font-family: "Nunito", sans-serif;
+}
+.imageUploadForm {
+  border-radius: 10px;
+  //   background: rgba(19, 30, 37, 1);
+  height: 400px;
+  // width: 500px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  .helpText {
+    color: rgb(0, 0, 0);
+    display: block;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 30px;
+    &:after {
+      $color: rgba(rgb(0, 0, 0), 0.5);
+      content: "⇪";
+      font-family: "FontAwesome";
+      font-size: 150%;
+      color: $color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4% auto auto auto;
+      width: 50%;
+      height: 50%;
+      border: 6px dashed $color;
+    }
+  }
+  .pickFile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: white;
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn.pickFileButton {
+    display: inline-block;
+    padding: 0.7em 2em;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(19, 30, 37, 1);
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .uploadButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+}
+.imageUploadForm.loading1 {
+  .helpText {
+    font-size: 0;
+    top: 7%;
+    &:before {
+      font-size: 30px;
+      content: "Uploading...";
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.imageUploadForm.loading {
+  // .helpText {
+  //   font-size: 0;
+  //   top: 7%;
+  //   &:before {
+  //     font-size: 30px;
+  //     content: 'Uploading...';
+  //   }
+  //   &:after {
+  //     display: none;
+  //   }
+  // }
+
+  .uploadedImg {
+    position: absolute;
+    bottom: 12.5%;
+    left: 12.5%;
+    width: 75%;
+    height: 65%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: 4px solid white;
+    transition: opacity 0.3 ease-out;
+  }
+
+  .unveil {
+    position: absolute;
+    background: #6e95f7;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    &:after {
+      content: "";
+      position: absolute;
+      left: -3%;
+      bottom: 0;
+      height: 10px;
+      width: 106%;
+      background: #ffd16e;
+      border-radius: 5px;
+    }
+    animation: toTop 4s forwards;
+  }
+  .pickFile,
+  .uploadButton {
+    display: none;
+  }
+}
+
+.imageUploadForm.loading.loaded {
+  height: 200px;
+  .uploadedImg {
+    opacity: 0;
+  }
+
+  .helpText {
+    &:before {
+      content: "Upload Complete!";
+    }
+    &:after {
+      display: block;
+      opacity: 0;
+      font-size: 0;
+      line-height: 100px;
+      animation: fadeIn 0.4s forwards;
+      content: "☑︎";
+      color: white;
+      margin-top: 2%;
+      border-width: 0;
+    }
+  }
+}
+
+@keyframes toTop {
+  to {
+    height: 0;
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    font-size: 90px;
+  }
+}
+
+.col-sm-6 {
+  float: right !important;
+}
+.dis {
+  font-size: 16px;
+}
